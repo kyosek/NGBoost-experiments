@@ -20,29 +20,14 @@ pd.set_option('display.max_rows', None)
 
 #####################################################
 
-objects = []
-for i in features.columns:
-    if features[i].dtype == object:
-        objects.append(i)
-features.update(features[objects].fillna('None'))
-
-features['LotFrontage'] = features.groupby('Neighborhood')['LotFrontage'].transform(lambda x: x.fillna(x.median()))
-
-numeric_dtypes = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
-numerics = []
-for i in features.columns:
-    if features[i].dtype in numeric_dtypes:
-        numerics.append(i)
-features.update(features[numerics].fillna(0))
 
 
 
 
 
-
-
-
+# Nanashi's solution # https://www.kaggle.com/jesucristo/1-house-prices-solution-top-1
 #######################################################
+
 train, test = train.drop(['Id'],1), test.drop(['Id'],1)
 train = train[train['GrLivArea']<4500]
 train['SalePrice'] = np.log1p(train['SalePrice'])
@@ -141,12 +126,4 @@ e_l1ratio = [0.8, 0.85, 0.9, 0.95, 0.99, 1]
 X['SalePrice'] = y
 X = X.dropna()
 X_tr, X_val = train_test_split(X,test_size=.2,random_state=42)
-
-
-
-class Preprocess(object):
-
-    def __init__(self):
-        self.drop(['Id'],1)
-        log_price = self.np.log1p(['SalePrice'])
 
