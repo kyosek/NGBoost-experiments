@@ -29,7 +29,8 @@ I would like to show the model performance on the famous [house price prediction
 
 ## Results
 ![results](src/resources/stored-objects/results.png)
-NGBoost outperformed other famous boosting algorithms. To be fair, I feel like if I tune the parameters of BGBoost, it will be even better.
+
+NGBoost outperformed other famous boosting algorithms. I feel like if I tune the parameters well, NGBoost's performance will be even better.
 
 NGBoost’s one of the biggest difference from other boosting algorithms is can return probabilistic distribution of each prediction instead of "point" predictions. Here are two examples.
 ![ind0](src/resources/stored-objects/prob_dist_0.png)
